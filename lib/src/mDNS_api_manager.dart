@@ -131,7 +131,8 @@ class MDNSApiManager {
     return count;
   }
 
-  Future<Map<String, dynamic>> _processGetPropertyValue(Uint8List returnData) async {
+  Future<Map<String, dynamic>> _processGetPropertyValue(
+      Uint8List returnData) async {
     try {
       final response = LocalCtrlMessage.fromBuffer(returnData);
 
@@ -143,7 +144,8 @@ class MDNSApiManager {
         for (final propertyInfo in propertyInfoList) {
           final strFromBytes =
               utf8.decode(propertyInfo.value, allowMalformed: true);
-          bundle[propertyInfo.name] = await JsonIsolate().decodeJson(strFromBytes);
+          bundle[propertyInfo.name] =
+              await JsonIsolate().decodeJson(strFromBytes);
         }
         return bundle;
       } else {

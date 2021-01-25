@@ -62,7 +62,7 @@ class LocalControl {
   }
 
   Future<IPAndPort> _getDeviceIP() async {
-    try{
+    try {
       await _client.start();
 
       await for (PtrResourceRecord ptr in _client.lookup<PtrResourceRecord>(
@@ -86,7 +86,7 @@ class LocalControl {
       }
 
       _client.stop();
-    } catch(e) {
+    } catch (e) {
       return null;
     }
     return null;

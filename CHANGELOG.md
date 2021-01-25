@@ -1,3 +1,7 @@
+## 0.1.0+1
+
+- Formatted code to improve pub score.
+
 ## 0.1.0
 
 - Use isolate for JSON encoding.
