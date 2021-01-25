@@ -32,7 +32,7 @@ class LocalControl {
   final MDNSApiManager _apiManager = MDNSApiManager();
 
   /// Creates object for local control and starts polling timer.
-  /// 
+  ///
   /// The [scanningPeriod] is how often the service will try to find
   /// the Rainmaker device. If [stopScanOnSuccess] is true, the polling
   /// will stop upon first successfully finding the IP and port.
