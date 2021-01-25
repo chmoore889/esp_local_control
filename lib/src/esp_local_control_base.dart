@@ -38,9 +38,10 @@ class LocalControl {
   /// will stop upon first successfully finding the IP and port.
   LocalControl(this.id,
       [Duration scanningPeriod = const Duration(seconds: 15),
-      bool stopScanOnSuccess])
+      bool stopScanOnSuccess = true])
       : assert(id != null),
-        assert(scanningPeriod != null) {
+        assert(scanningPeriod != null),
+        assert(stopScanOnSuccess != null) {
     _checkingTimer = Timer.periodic(scanningPeriod, (timer) async {
       final tmpIp = await _getDeviceIP();
       if (tmpIp != null) {

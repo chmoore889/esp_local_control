@@ -1,3 +1,7 @@
+## 0.1.1
+
+- Added default value to contructor parameter.
+
 ## 0.1.0+1
 
 - Formatted code to improve pub score.
