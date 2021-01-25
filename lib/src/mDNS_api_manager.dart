@@ -5,6 +5,7 @@ import 'package:esp_rainmaker_local_control/src/esp_local_control_base.dart';
 import 'package:esp_rainmaker_local_control/src/proto/constants.pb.dart';
 import 'package:esp_rainmaker_local_control/src/proto/esp_local_ctrl.pb.dart';
 import 'package:http/http.dart';
+import 'package:isolate_json/isolate_json.dart';
 import 'package:protobuf/protobuf.dart';
 
 class MDNSApiManager {
@@ -35,7 +36,7 @@ class MDNSApiManager {
   }
 
   Future<void> updateParamValue(String url, Map<String, dynamic> body) async {
-    final jsonData = jsonEncode(body);
+    final jsonData = await JsonIsolate().encodeJson(body);
     final data = _createSetPropertyInfoRequest(jsonData);
 
     final returnData = await _sendRequest(url + path, data);
@@ -71,7 +72,7 @@ class MDNSApiManager {
 
     final returnData = await _sendRequest(url + path, data);
     if (returnData != null) {
-      return _processGetPropertyValue(returnData);
+      return await _processGetPropertyValue(returnData);
     } else {
       throw LocalControlFailed();
     }
@@ -130,7 +131,7 @@ class MDNSApiManager {
     return count;
   }
 
-  Map<String, dynamic> _processGetPropertyValue(Uint8List returnData) {
+  Future<Map<String, dynamic>> _processGetPropertyValue(Uint8List returnData) async {
     try {
       final response = LocalCtrlMessage.fromBuffer(returnData);
 
@@ -142,7 +143,7 @@ class MDNSApiManager {
         for (final propertyInfo in propertyInfoList) {
           final strFromBytes =
               utf8.decode(propertyInfo.value, allowMalformed: true);
-          bundle[propertyInfo.name] = jsonDecode(strFromBytes);
+          bundle[propertyInfo.name] = await JsonIsolate().decodeJson(strFromBytes);
         }
         return bundle;
       } else {
