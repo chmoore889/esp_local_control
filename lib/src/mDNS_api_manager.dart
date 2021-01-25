@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:esp_local_control/src/esp_local_control_base.dart';
-import 'package:esp_local_control/src/proto/constants.pb.dart';
-import 'package:esp_local_control/src/proto/esp_local_ctrl.pb.dart';
+import 'package:esp_rainmaker_local_control/src/esp_local_control_base.dart';
+import 'package:esp_rainmaker_local_control/src/proto/constants.pb.dart';
+import 'package:esp_rainmaker_local_control/src/proto/esp_local_ctrl.pb.dart';
 import 'package:http/http.dart';
 import 'package:protobuf/protobuf.dart';
 
@@ -140,7 +140,8 @@ class MDNSApiManager {
         final bundle = <String, dynamic>{};
 
         for (final propertyInfo in propertyInfoList) {
-          final strFromBytes = utf8.decode(propertyInfo.value, allowMalformed: true);
+          final strFromBytes =
+              utf8.decode(propertyInfo.value, allowMalformed: true);
           bundle[propertyInfo.name] = jsonDecode(strFromBytes);
         }
         return bundle;
