@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   multicast_dns: ^0.2.2
+  http: ^0.12.2
   protobuf: ^1.1.0
   meta: ^1.2.4
 

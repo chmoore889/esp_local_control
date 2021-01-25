@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:http/http.dart';
+import 'package:esp_local_control/src/mDNS_api_manager.dart';
 import 'package:meta/meta.dart';
 import 'package:multicast_dns/multicast_dns.dart';
 
 class LocalControl {
   static const String serviceType = '_esp_local_ctrl._tcp';
 
-  static const String path = '/esp_local_ctrl/control';
-
   final MDnsClient client = MDnsClient(
-    rawDatagramSocketFactory: (dynamic host, int port, {bool reuseAddress, bool reusePort, int ttl}) {
-      return RawDatagramSocket.bind(host, port, reuseAddress: true, reusePort: false, ttl: ttl);
+    rawDatagramSocketFactory: (dynamic host, int port,
+        {bool reuseAddress, bool reusePort, int ttl}) {
+      return RawDatagramSocket.bind(host, port,
+          reuseAddress: true, reusePort: false, ttl: ttl);
     },
   );
 
@@ -21,25 +21,38 @@ class LocalControl {
 
   Timer _checkingTimer;
 
+  final MDNSApiManager _apiManager = MDNSApiManager();
+
   LocalControl(this.id) : assert(id != null) {
     _checkingTimer = Timer.periodic(Duration(seconds: 15), (timer) async {
-      ipAndPort = await _getDeviceIP();
+      final tmpIp = await _getDeviceIP();
+      if(tmpIp != null) {
+        ipAndPort = tmpIp;
+      }
+      
+      //print(ipAndPort);
     });
   }
 
   void dispose() {
     _checkingTimer?.cancel();
+    _apiManager.dispose();
   }
 
   Future<IPAndPort> _getDeviceIP() async {
     await client.start();
 
-    await for(PtrResourceRecord ptr in client.lookup<PtrResourceRecord>(ResourceRecordQuery.serverPointer(serviceType))) {
-      await for(SrvResourceRecord srv in client.lookup<SrvResourceRecord>(ResourceRecordQuery.service(ptr.domainName))) {
-        if(id == srv.target.split('.').first) {
+    await for (PtrResourceRecord ptr in client.lookup<PtrResourceRecord>(
+        ResourceRecordQuery.serverPointer(serviceType))) {
+      await for (SrvResourceRecord srv in client.lookup<SrvResourceRecord>(
+          ResourceRecordQuery.service(ptr.domainName))) {
+        if (id == srv.target.split('.').first) {
           //print('ESP Local found at ${srv.target}:${srv.port} for "${ptr.domainName}".');
-          await for(IPAddressResourceRecord ip in client.lookup<IPAddressResourceRecord>(ResourceRecordQuery.addressIPv4(srv.target))) {
+          await for (IPAddressResourceRecord ip
+              in client.lookup<IPAddressResourceRecord>(
+                  ResourceRecordQuery.addressIPv4(srv.target))) {
             client.stop();
+            //print(ip.address.address);
             return IPAndPort(
               ip: ip.address.address,
               port: srv.port,
@@ -53,24 +66,40 @@ class LocalControl {
     return null;
   }
 
-  Future<void> makeRequest() async {
+  Future<Map<String, dynamic>> getNodeDetails([bool forceDeviceCheck = false]) async {
+    if(forceDeviceCheck) {
+      ipAndPort = await _getDeviceIP();
+    }
+
     if(ipAndPort == null) {
-      throw const LocalControlUnavailable();
+      throw LocalControlUnavailable();
     }
 
-    final resp = await post(
-      ipAndPort.baseUrl + path,
-      headers: {
-        'Accept': 'text/plain',
-        'Content-type': 'application/x-www-form-urlencoded',
-      },
-    );
+    return _apiManager.getNodeDetails(ipAndPort.baseUrl);
+  }
 
-    if(resp.statusCode != 200) {
-      throw const LocalControlUnavailable();
+  Future<Map<String, dynamic>> getParamsValues([bool forceDeviceCheck = false]) async {
+    if(forceDeviceCheck) {
+      ipAndPort = await _getDeviceIP();
     }
 
+    if(ipAndPort == null) {
+      throw LocalControlUnavailable();
+    }
+
+    return _apiManager.getParamsValues(ipAndPort.baseUrl);
+  }
+
+  Future<void> updateParamValue(Map<String, dynamic> body, [bool forceDeviceCheck = false]) async {
+    if(forceDeviceCheck) {
+      ipAndPort = await _getDeviceIP();
+    }
     
+    if(ipAndPort == null) {
+      throw LocalControlUnavailable();
+    }
+
+    return _apiManager.updateParamValue(ipAndPort.baseUrl, body);
   }
 }
 
@@ -86,6 +115,11 @@ class IPAndPort {
 
   String get baseUrl {
     return 'http://$ip:$port';
+  }
+
+  @override
+  String toString() {
+    return 'IPAndPort{IP: $ip, Port: $port}';
   }
 }
 
