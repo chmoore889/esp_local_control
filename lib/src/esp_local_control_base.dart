@@ -62,29 +62,33 @@ class LocalControl {
   }
 
   Future<IPAndPort> _getDeviceIP() async {
-    await _client.start();
+    try{
+      await _client.start();
 
-    await for (PtrResourceRecord ptr in _client.lookup<PtrResourceRecord>(
-        ResourceRecordQuery.serverPointer(_serviceType))) {
-      await for (SrvResourceRecord srv in _client.lookup<SrvResourceRecord>(
-          ResourceRecordQuery.service(ptr.domainName))) {
-        if (id == srv.target.split('.').first) {
-          //print('ESP Local found at ${srv.target}:${srv.port} for "${ptr.domainName}".');
-          await for (IPAddressResourceRecord ip
-              in _client.lookup<IPAddressResourceRecord>(
-                  ResourceRecordQuery.addressIPv4(srv.target))) {
-            _client.stop();
-            //print(ip.address.address);
-            return IPAndPort(
-              ip: ip.address.address,
-              port: srv.port,
-            );
+      await for (PtrResourceRecord ptr in _client.lookup<PtrResourceRecord>(
+          ResourceRecordQuery.serverPointer(_serviceType))) {
+        await for (SrvResourceRecord srv in _client.lookup<SrvResourceRecord>(
+            ResourceRecordQuery.service(ptr.domainName))) {
+          if (id == srv.target.split('.').first) {
+            //print('ESP Local found at ${srv.target}:${srv.port} for "${ptr.domainName}".');
+            await for (IPAddressResourceRecord ip
+                in _client.lookup<IPAddressResourceRecord>(
+                    ResourceRecordQuery.addressIPv4(srv.target))) {
+              _client.stop();
+              //print(ip.address.address);
+              return IPAndPort(
+                ip: ip.address.address,
+                port: srv.port,
+              );
+            }
           }
         }
       }
-    }
 
-    _client.stop();
+      _client.stop();
+    } catch(e) {
+      return null;
+    }
     return null;
   }
 
