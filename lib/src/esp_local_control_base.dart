@@ -28,6 +28,7 @@ class LocalControl {
 
   IPAndPort _ipAndPort;
   Timer _checkingTimer;
+  Future<void> _clientStart;
 
   final MDNSApiManager _apiManager = MDNSApiManager();
 
@@ -42,13 +43,17 @@ class LocalControl {
       : assert(id != null),
         assert(scanningPeriod != null),
         assert(stopScanOnSuccess != null) {
+    _clientStart = _client.start();
+
     _checkingTimer = Timer.periodic(scanningPeriod, (timer) async {
       final tmpIp = await _getDeviceIP();
+      //print(tmpIp);
       if (tmpIp != null) {
         _ipAndPort = tmpIp;
 
         if (stopScanOnSuccess) {
           timer?.cancel();
+          _client.stop();
         }
       }
 
@@ -59,12 +64,14 @@ class LocalControl {
   /// Releases resources used by this object.
   void dispose() {
     _checkingTimer?.cancel();
+    _client.stop();
+
     _apiManager.dispose();
   }
 
   Future<IPAndPort> _getDeviceIP() async {
     try {
-      await _client.start();
+      await _clientStart;
 
       await for (PtrResourceRecord ptr in _client.lookup<PtrResourceRecord>(
           ResourceRecordQuery.serverPointer(_serviceType))) {
@@ -85,8 +92,6 @@ class LocalControl {
           }
         }
       }
-
-      _client.stop();
     } catch (e) {
       return null;
     }

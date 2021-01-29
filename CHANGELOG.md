@@ -1,3 +1,7 @@
+## 0.1.2
+
+- Improved reliability and caught error.
+
 ## 0.1.1
 
 - Added default value to contructor parameter.
