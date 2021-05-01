@@ -2,9 +2,14 @@
 //  Generated code. Do not modify.
 //  source: esp_local_ctrl.proto
 //
-// @dart = 2.3
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
 
+import 'dart:core' as $core;
+import 'dart:convert' as $convert;
+import 'dart:typed_data' as $typed_data;
+
+@$core.Deprecated('Use localCtrlMsgTypeDescriptor instead')
 const LocalCtrlMsgType$json = const {
   '1': 'LocalCtrlMsgType',
   '2': const [
@@ -17,10 +22,18 @@ const LocalCtrlMsgType$json = const {
   ],
 };
 
+/// Descriptor for `LocalCtrlMsgType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List localCtrlMsgTypeDescriptor = $convert.base64Decode(
+    'ChBMb2NhbEN0cmxNc2dUeXBlEhsKF1R5cGVDbWRHZXRQcm9wZXJ0eUNvdW50EAASHAoYVHlwZVJlc3BHZXRQcm9wZXJ0eUNvdW50EAESHAoYVHlwZUNtZEdldFByb3BlcnR5VmFsdWVzEAQSHQoZVHlwZVJlc3BHZXRQcm9wZXJ0eVZhbHVlcxAFEhwKGFR5cGVDbWRTZXRQcm9wZXJ0eVZhbHVlcxAGEh0KGVR5cGVSZXNwU2V0UHJvcGVydHlWYWx1ZXMQBw==');
+@$core.Deprecated('Use cmdGetPropertyCountDescriptor instead')
 const CmdGetPropertyCount$json = const {
   '1': 'CmdGetPropertyCount',
 };
 
+/// Descriptor for `CmdGetPropertyCount`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List cmdGetPropertyCountDescriptor =
+    $convert.base64Decode('ChNDbWRHZXRQcm9wZXJ0eUNvdW50');
+@$core.Deprecated('Use respGetPropertyCountDescriptor instead')
 const RespGetPropertyCount$json = const {
   '1': 'RespGetPropertyCount',
   '2': const [
@@ -36,6 +49,10 @@ const RespGetPropertyCount$json = const {
   ],
 };
 
+/// Descriptor for `RespGetPropertyCount`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List respGetPropertyCountDescriptor = $convert.base64Decode(
+    'ChRSZXNwR2V0UHJvcGVydHlDb3VudBItCgZzdGF0dXMYASABKA4yFS5ybV9sb2NhbF9jdHJsLlN0YXR1c1IGc3RhdHVzEhQKBWNvdW50GAIgASgNUgVjb3VudA==');
+@$core.Deprecated('Use propertyInfoDescriptor instead')
 const PropertyInfo$json = const {
   '1': 'PropertyInfo',
   '2': const [
@@ -54,6 +71,10 @@ const PropertyInfo$json = const {
   ],
 };
 
+/// Descriptor for `PropertyInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List propertyInfoDescriptor = $convert.base64Decode(
+    'CgxQcm9wZXJ0eUluZm8SLQoGc3RhdHVzGAEgASgOMhUucm1fbG9jYWxfY3RybC5TdGF0dXNSBnN0YXR1cxISCgRuYW1lGAIgASgJUgRuYW1lEhIKBHR5cGUYAyABKA1SBHR5cGUSFAoFZmxhZ3MYBCABKA1SBWZsYWdzEhQKBXZhbHVlGAUgASgMUgV2YWx1ZQ==');
+@$core.Deprecated('Use cmdGetPropertyValuesDescriptor instead')
 const CmdGetPropertyValues$json = const {
   '1': 'CmdGetPropertyValues',
   '2': const [
@@ -61,6 +82,11 @@ const CmdGetPropertyValues$json = const {
   ],
 };
 
+/// Descriptor for `CmdGetPropertyValues`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List cmdGetPropertyValuesDescriptor =
+    $convert.base64Decode(
+        'ChRDbWRHZXRQcm9wZXJ0eVZhbHVlcxIYCgdpbmRpY2VzGAEgAygNUgdpbmRpY2Vz');
+@$core.Deprecated('Use respGetPropertyValuesDescriptor instead')
 const RespGetPropertyValues$json = const {
   '1': 'RespGetPropertyValues',
   '2': const [
@@ -83,6 +109,10 @@ const RespGetPropertyValues$json = const {
   ],
 };
 
+/// Descriptor for `RespGetPropertyValues`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List respGetPropertyValuesDescriptor = $convert.base64Decode(
+    'ChVSZXNwR2V0UHJvcGVydHlWYWx1ZXMSLQoGc3RhdHVzGAEgASgOMhUucm1fbG9jYWxfY3RybC5TdGF0dXNSBnN0YXR1cxIxCgVwcm9wcxgCIAMoCzIbLnJtX2xvY2FsX2N0cmwuUHJvcGVydHlJbmZvUgVwcm9wcw==');
+@$core.Deprecated('Use propertyValueDescriptor instead')
 const PropertyValue$json = const {
   '1': 'PropertyValue',
   '2': const [
@@ -91,6 +121,10 @@ const PropertyValue$json = const {
   ],
 };
 
+/// Descriptor for `PropertyValue`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List propertyValueDescriptor = $convert.base64Decode(
+    'Cg1Qcm9wZXJ0eVZhbHVlEhQKBWluZGV4GAEgASgNUgVpbmRleBIUCgV2YWx1ZRgCIAEoDFIFdmFsdWU=');
+@$core.Deprecated('Use cmdSetPropertyValuesDescriptor instead')
 const CmdSetPropertyValues$json = const {
   '1': 'CmdSetPropertyValues',
   '2': const [
@@ -105,6 +139,10 @@ const CmdSetPropertyValues$json = const {
   ],
 };
 
+/// Descriptor for `CmdSetPropertyValues`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List cmdSetPropertyValuesDescriptor = $convert.base64Decode(
+    'ChRDbWRTZXRQcm9wZXJ0eVZhbHVlcxIyCgVwcm9wcxgBIAMoCzIcLnJtX2xvY2FsX2N0cmwuUHJvcGVydHlWYWx1ZVIFcHJvcHM=');
+@$core.Deprecated('Use respSetPropertyValuesDescriptor instead')
 const RespSetPropertyValues$json = const {
   '1': 'RespSetPropertyValues',
   '2': const [
@@ -119,6 +157,10 @@ const RespSetPropertyValues$json = const {
   ],
 };
 
+/// Descriptor for `RespSetPropertyValues`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List respSetPropertyValuesDescriptor = $convert.base64Decode(
+    'ChVSZXNwU2V0UHJvcGVydHlWYWx1ZXMSLQoGc3RhdHVzGAEgASgOMhUucm1fbG9jYWxfY3RybC5TdGF0dXNSBnN0YXR1cw==');
+@$core.Deprecated('Use localCtrlMessageDescriptor instead')
 const LocalCtrlMessage$json = const {
   '1': 'LocalCtrlMessage',
   '2': const [
@@ -189,3 +231,7 @@ const LocalCtrlMessage$json = const {
     const {'1': 'payload'},
   ],
 };
+
+/// Descriptor for `LocalCtrlMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List localCtrlMessageDescriptor = $convert.base64Decode(
+    'ChBMb2NhbEN0cmxNZXNzYWdlEjEKA21zZxgBIAEoDjIfLnJtX2xvY2FsX2N0cmwuTG9jYWxDdHJsTXNnVHlwZVIDbXNnElEKEmNtZF9nZXRfcHJvcF9jb3VudBgKIAEoCzIiLnJtX2xvY2FsX2N0cmwuQ21kR2V0UHJvcGVydHlDb3VudEgAUg9jbWRHZXRQcm9wQ291bnQSVAoTcmVzcF9nZXRfcHJvcF9jb3VudBgLIAEoCzIjLnJtX2xvY2FsX2N0cmwuUmVzcEdldFByb3BlcnR5Q291bnRIAFIQcmVzcEdldFByb3BDb3VudBJQChFjbWRfZ2V0X3Byb3BfdmFscxgMIAEoCzIjLnJtX2xvY2FsX2N0cmwuQ21kR2V0UHJvcGVydHlWYWx1ZXNIAFIOY21kR2V0UHJvcFZhbHMSUwoScmVzcF9nZXRfcHJvcF92YWxzGA0gASgLMiQucm1fbG9jYWxfY3RybC5SZXNwR2V0UHJvcGVydHlWYWx1ZXNIAFIPcmVzcEdldFByb3BWYWxzElAKEWNtZF9zZXRfcHJvcF92YWxzGA4gASgLMiMucm1fbG9jYWxfY3RybC5DbWRTZXRQcm9wZXJ0eVZhbHVlc0gAUg5jbWRTZXRQcm9wVmFscxJTChJyZXNwX3NldF9wcm9wX3ZhbHMYDyABKAsyJC5ybV9sb2NhbF9jdHJsLlJlc3BTZXRQcm9wZXJ0eVZhbHVlc0gAUg9yZXNwU2V0UHJvcFZhbHNCCQoHcGF5bG9hZA==');
