@@ -1,6 +1,6 @@
 name: esp_rainmaker_local_control
 description: Library for locally controlling ESP Rainmaker devices with mDNS discovery.
-version: 1.0.0-nullsafety.0
+version: 1.0.0
 homepage: https://github.com/chmoore889/esp_local_control
 
 environment:

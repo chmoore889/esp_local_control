@@ -1,6 +1,6 @@
-## 1.0.0-nullsafety.1
+## 1.0.0
 
-- Initial null safety prerelease.
+- Initial null safety release.
 
 ## 0.1.2
 

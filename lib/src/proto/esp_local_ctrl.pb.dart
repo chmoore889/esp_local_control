@@ -66,14 +66,20 @@ class RespGetPropertyCount extends $pb.GeneratedMessage {
               ? ''
               : 'rm_local_ctrl'),
       createEmptyInstance: create)
-    ..e<$0.Status>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status',
+    ..e<$0.Status>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'status',
         $pb.PbFieldType.OE,
         defaultOrMaker: $0.Status.Success,
         valueOf: $0.Status.valueOf,
         enumValues: $0.Status.values)
     ..a<$core.int>(
         2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count',
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'count',
         $pb.PbFieldType.OU3)
     ..hasRequiredFields = false;
 
@@ -163,11 +169,29 @@ class PropertyInfo extends $pb.GeneratedMessage {
         defaultOrMaker: $0.Status.Success,
         valueOf: $0.Status.valueOf,
         enumValues: $0.Status.values)
-    ..aOS(2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OU3)
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'flags', $pb.PbFieldType.OU3)
-    ..a<$core.List<$core.int>>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value', $pb.PbFieldType.OY)
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..a<$core.int>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'type',
+        $pb.PbFieldType.OU3)
+    ..a<$core.int>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'flags',
+        $pb.PbFieldType.OU3)
+    ..a<$core.List<$core.int>>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'value',
+        $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   PropertyInfo._() : super();
@@ -355,13 +379,19 @@ class RespGetPropertyValues extends $pb.GeneratedMessage {
               : 'rm_local_ctrl'),
       createEmptyInstance: create)
     ..e<$0.Status>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE,
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'status',
+        $pb.PbFieldType.OE,
         defaultOrMaker: $0.Status.Success,
         valueOf: $0.Status.valueOf,
         enumValues: $0.Status.values)
     ..pc<PropertyInfo>(
         2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'props',
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'props',
         $pb.PbFieldType.PM,
         subBuilder: PropertyInfo.create)
     ..hasRequiredFields = false;
@@ -670,29 +700,61 @@ class LocalCtrlMessage extends $pb.GeneratedMessage {
     15: LocalCtrlMessage_Payload.respSetPropVals,
     0: LocalCtrlMessage_Payload.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LocalCtrlMessage',
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'LocalCtrlMessage',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'rm_local_ctrl'),
       createEmptyInstance: create)
     ..oo(0, [10, 11, 12, 13, 14, 15])
-    ..e<LocalCtrlMsgType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msg', $pb.PbFieldType.OE,
+    ..e<LocalCtrlMsgType>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'msg',
+        $pb.PbFieldType.OE,
         defaultOrMaker: LocalCtrlMsgType.TypeCmdGetPropertyCount,
         valueOf: LocalCtrlMsgType.valueOf,
         enumValues: LocalCtrlMsgType.values)
     ..aOM<CmdGetPropertyCount>(
-        10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cmdGetPropCount',
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'cmdGetPropCount',
         subBuilder: CmdGetPropertyCount.create)
     ..aOM<RespGetPropertyCount>(
-        11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'respGetPropCount',
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'respGetPropCount',
         subBuilder: RespGetPropertyCount.create)
     ..aOM<CmdGetPropertyValues>(
-        12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cmdGetPropVals',
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'cmdGetPropVals',
         subBuilder: CmdGetPropertyValues.create)
-    ..aOM<RespGetPropertyValues>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'respGetPropVals', subBuilder: RespGetPropertyValues.create)
-    ..aOM<CmdSetPropertyValues>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cmdSetPropVals', subBuilder: CmdSetPropertyValues.create)
-    ..aOM<RespSetPropertyValues>(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'respSetPropVals', subBuilder: RespSetPropertyValues.create)
+    ..aOM<RespGetPropertyValues>(
+        13,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'respGetPropVals',
+        subBuilder: RespGetPropertyValues.create)
+    ..aOM<CmdSetPropertyValues>(
+        14,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'cmdSetPropVals',
+        subBuilder: CmdSetPropertyValues.create)
+    ..aOM<RespSetPropertyValues>(
+        15,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'respSetPropVals',
+        subBuilder: RespSetPropertyValues.create)
     ..hasRequiredFields = false;
 
   LocalCtrlMessage._() : super();
