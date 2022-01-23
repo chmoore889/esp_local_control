@@ -1,3 +1,7 @@
+## 1.0.0-nullsafety.1
+
+- Initial null safety prerelease.
+
 ## 0.1.2
 
 - Improved reliability and caught error.

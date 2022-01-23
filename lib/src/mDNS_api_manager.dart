@@ -11,11 +11,9 @@ import 'package:protobuf/protobuf.dart';
 class MDNSApiManager {
   static const String path = '/esp_local_ctrl/control';
 
-  Client client;
+  final Client client;
 
-  MDNSApiManager() {
-    client = Client();
-  }
+  MDNSApiManager() : client = Client();
 
   void dispose() {
     client.close();
@@ -40,15 +38,11 @@ class MDNSApiManager {
     final data = _createSetPropertyInfoRequest(jsonData);
 
     final returnData = await _sendRequest(url + path, data);
-    if (returnData != null) {
-      final response = LocalCtrlMessage.fromBuffer(returnData);
-      final status = response.respSetPropVals.status;
+    final response = LocalCtrlMessage.fromBuffer(returnData);
+    final status = response.respSetPropVals.status;
 
-      if (status == Status.Success) {
-        return;
-      } else {
-        throw LocalControlFailed();
-      }
+    if (status == Status.Success) {
+      return;
     } else {
       throw LocalControlFailed();
     }
@@ -58,12 +52,8 @@ class MDNSApiManager {
     final data = _createGetPropertyCountRequest();
 
     final returnData = await _sendRequest(url + path, data);
-    if (returnData != null) {
-      final count = _processGetPropertyCount(returnData);
-      return count;
-    } else {
-      throw LocalControlFailed();
-    }
+    final count = _processGetPropertyCount(returnData);
+    return count;
   }
 
   Future<Map<String, dynamic>> getPropertyValues(
@@ -71,11 +61,7 @@ class MDNSApiManager {
     final data = _createGetAllPropertyValuesRequest(count);
 
     final returnData = await _sendRequest(url + path, data);
-    if (returnData != null) {
-      return await _processGetPropertyValue(returnData);
-    } else {
-      throw LocalControlFailed();
-    }
+    return await _processGetPropertyValue(returnData);
   }
 
   Uint8List _createGetPropertyCountRequest() {
@@ -159,7 +145,7 @@ class MDNSApiManager {
 
   Future<Uint8List> _sendRequest(String url, Uint8List data) async {
     final resp = await client.post(
-      url,
+      Uri.parse(url),
       headers: {
         'Accept': 'text/plain',
         'Content-type': 'application/x-www-form-urlencoded',

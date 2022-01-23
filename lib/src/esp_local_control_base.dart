@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:esp_rainmaker_local_control/src/mDNS_api_manager.dart';
 import 'package:meta/meta.dart';
@@ -9,26 +8,20 @@ import 'package:multicast_dns/multicast_dns.dart';
 class LocalControl {
   static const String _serviceType = '_esp_local_ctrl._tcp';
 
-  final MDnsClient _client = MDnsClient(
-    rawDatagramSocketFactory: (dynamic host, int port,
-        {bool reuseAddress, bool reusePort, int ttl}) {
-      return RawDatagramSocket.bind(host, port,
-          reuseAddress: true, reusePort: false, ttl: ttl);
-    },
-  );
+  final MDnsClient _client = MDnsClient();
 
   /// Rainmaker ID of the device to locally control.
   final String id;
 
   /// The IP address and port number of the device once
   /// discovered.
-  IPAndPort get deviceAddress {
+  IPAndPort? get deviceAddress {
     return _ipAndPort;
   }
 
-  IPAndPort _ipAndPort;
-  Timer _checkingTimer;
-  Future<void> _clientStart;
+  IPAndPort? _ipAndPort;
+  late final Timer _checkingTimer;
+  late final Future<void> _clientStart;
 
   final MDNSApiManager _apiManager = MDNSApiManager();
 
@@ -39,10 +32,7 @@ class LocalControl {
   /// will stop upon first successfully finding the IP and port.
   LocalControl(this.id,
       [Duration scanningPeriod = const Duration(seconds: 15),
-      bool stopScanOnSuccess = true])
-      : assert(id != null),
-        assert(scanningPeriod != null),
-        assert(stopScanOnSuccess != null) {
+      bool stopScanOnSuccess = true]) {
     _clientStart = _client.start();
 
     _checkingTimer = Timer.periodic(scanningPeriod, (timer) async {
@@ -52,7 +42,7 @@ class LocalControl {
         _ipAndPort = tmpIp;
 
         if (stopScanOnSuccess) {
-          timer?.cancel();
+          timer.cancel();
           _client.stop();
         }
       }
@@ -63,13 +53,13 @@ class LocalControl {
 
   /// Releases resources used by this object.
   void dispose() {
-    _checkingTimer?.cancel();
+    _checkingTimer.cancel();
     _client.stop();
 
     _apiManager.dispose();
   }
 
-  Future<IPAndPort> _getDeviceIP() async {
+  Future<IPAndPort?> _getDeviceIP() async {
     try {
       await _clientStart;
 
@@ -119,7 +109,7 @@ class LocalControl {
       throw LocalControlUnavailable();
     }
 
-    return _apiManager.getNodeDetails(_ipAndPort.baseUrl);
+    return _apiManager.getNodeDetails(_ipAndPort!.baseUrl);
   }
 
   /// Obtains the device parameters.
@@ -143,7 +133,7 @@ class LocalControl {
       throw LocalControlUnavailable();
     }
 
-    return _apiManager.getParamsValues(_ipAndPort.baseUrl);
+    return _apiManager.getParamsValues(_ipAndPort!.baseUrl);
   }
 
   /// Sets the device parameters.
@@ -167,7 +157,7 @@ class LocalControl {
       throw LocalControlUnavailable();
     }
 
-    return _apiManager.updateParamValue(_ipAndPort.baseUrl, body);
+    return _apiManager.updateParamValue(_ipAndPort!.baseUrl, body);
   }
 }
 
@@ -180,8 +170,8 @@ class IPAndPort {
   final int port;
 
   IPAndPort({
-    @required this.ip,
-    @required this.port,
+    required this.ip,
+    required this.port,
   });
 
   String get baseUrl {

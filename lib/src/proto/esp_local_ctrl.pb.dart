@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: esp_local_ctrl.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
@@ -42,8 +42,8 @@ class CmdGetPropertyCount extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   CmdGetPropertyCount copyWith(void Function(CmdGetPropertyCount) updates) =>
-      super.copyWith((message) => updates(
-          message as CmdGetPropertyCount)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as CmdGetPropertyCount))
+          as CmdGetPropertyCount; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static CmdGetPropertyCount create() => CmdGetPropertyCount._();
@@ -53,7 +53,7 @@ class CmdGetPropertyCount extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static CmdGetPropertyCount getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<CmdGetPropertyCount>(create);
-  static CmdGetPropertyCount _defaultInstance;
+  static CmdGetPropertyCount? _defaultInstance;
 }
 
 class RespGetPropertyCount extends $pb.GeneratedMessage {
@@ -78,7 +78,19 @@ class RespGetPropertyCount extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   RespGetPropertyCount._() : super();
-  factory RespGetPropertyCount() => create();
+  factory RespGetPropertyCount({
+    $0.Status? status,
+    $core.int? count,
+  }) {
+    final _result = create();
+    if (status != null) {
+      _result.status = status;
+    }
+    if (count != null) {
+      _result.count = count;
+    }
+    return _result;
+  }
   factory RespGetPropertyCount.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -94,8 +106,8 @@ class RespGetPropertyCount extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   RespGetPropertyCount copyWith(void Function(RespGetPropertyCount) updates) =>
-      super.copyWith((message) => updates(
-          message as RespGetPropertyCount)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as RespGetPropertyCount))
+          as RespGetPropertyCount; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static RespGetPropertyCount create() => RespGetPropertyCount._();
@@ -105,7 +117,7 @@ class RespGetPropertyCount extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static RespGetPropertyCount getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RespGetPropertyCount>(create);
-  static RespGetPropertyCount _defaultInstance;
+  static RespGetPropertyCount? _defaultInstance;
 
   @$pb.TagNumber(1)
   $0.Status get status => $_getN(0);
@@ -159,7 +171,31 @@ class PropertyInfo extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   PropertyInfo._() : super();
-  factory PropertyInfo() => create();
+  factory PropertyInfo({
+    $0.Status? status,
+    $core.String? name,
+    $core.int? type,
+    $core.int? flags,
+    $core.List<$core.int>? value,
+  }) {
+    final _result = create();
+    if (status != null) {
+      _result.status = status;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    if (type != null) {
+      _result.type = type;
+    }
+    if (flags != null) {
+      _result.flags = flags;
+    }
+    if (value != null) {
+      _result.value = value;
+    }
+    return _result;
+  }
   factory PropertyInfo.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -174,8 +210,8 @@ class PropertyInfo extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   PropertyInfo copyWith(void Function(PropertyInfo) updates) =>
-      super.copyWith((message) =>
-          updates(message as PropertyInfo)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as PropertyInfo))
+          as PropertyInfo; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PropertyInfo create() => PropertyInfo._();
@@ -185,7 +221,7 @@ class PropertyInfo extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static PropertyInfo getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PropertyInfo>(create);
-  static PropertyInfo _defaultInstance;
+  static PropertyInfo? _defaultInstance;
 
   @$pb.TagNumber(1)
   $0.Status get status => $_getN(0);
@@ -267,7 +303,15 @@ class CmdGetPropertyValues extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   CmdGetPropertyValues._() : super();
-  factory CmdGetPropertyValues() => create();
+  factory CmdGetPropertyValues({
+    $core.Iterable<$core.int>? indices,
+  }) {
+    final _result = create();
+    if (indices != null) {
+      _result.indices.addAll(indices);
+    }
+    return _result;
+  }
   factory CmdGetPropertyValues.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -283,8 +327,8 @@ class CmdGetPropertyValues extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   CmdGetPropertyValues copyWith(void Function(CmdGetPropertyValues) updates) =>
-      super.copyWith((message) => updates(
-          message as CmdGetPropertyValues)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as CmdGetPropertyValues))
+          as CmdGetPropertyValues; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static CmdGetPropertyValues create() => CmdGetPropertyValues._();
@@ -294,7 +338,7 @@ class CmdGetPropertyValues extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static CmdGetPropertyValues getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<CmdGetPropertyValues>(create);
-  static CmdGetPropertyValues _defaultInstance;
+  static CmdGetPropertyValues? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<$core.int> get indices => $_getList(0);
@@ -323,7 +367,19 @@ class RespGetPropertyValues extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   RespGetPropertyValues._() : super();
-  factory RespGetPropertyValues() => create();
+  factory RespGetPropertyValues({
+    $0.Status? status,
+    $core.Iterable<PropertyInfo>? props,
+  }) {
+    final _result = create();
+    if (status != null) {
+      _result.status = status;
+    }
+    if (props != null) {
+      _result.props.addAll(props);
+    }
+    return _result;
+  }
   factory RespGetPropertyValues.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -340,8 +396,8 @@ class RespGetPropertyValues extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   RespGetPropertyValues copyWith(
           void Function(RespGetPropertyValues) updates) =>
-      super.copyWith((message) => updates(
-          message as RespGetPropertyValues)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as RespGetPropertyValues))
+          as RespGetPropertyValues; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static RespGetPropertyValues create() => RespGetPropertyValues._();
@@ -351,7 +407,7 @@ class RespGetPropertyValues extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static RespGetPropertyValues getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RespGetPropertyValues>(create);
-  static RespGetPropertyValues _defaultInstance;
+  static RespGetPropertyValues? _defaultInstance;
 
   @$pb.TagNumber(1)
   $0.Status get status => $_getN(0);
@@ -394,7 +450,19 @@ class PropertyValue extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   PropertyValue._() : super();
-  factory PropertyValue() => create();
+  factory PropertyValue({
+    $core.int? index,
+    $core.List<$core.int>? value,
+  }) {
+    final _result = create();
+    if (index != null) {
+      _result.index = index;
+    }
+    if (value != null) {
+      _result.value = value;
+    }
+    return _result;
+  }
   factory PropertyValue.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -409,8 +477,8 @@ class PropertyValue extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   PropertyValue copyWith(void Function(PropertyValue) updates) =>
-      super.copyWith((message) =>
-          updates(message as PropertyValue)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as PropertyValue))
+          as PropertyValue; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PropertyValue create() => PropertyValue._();
@@ -420,7 +488,7 @@ class PropertyValue extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static PropertyValue getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PropertyValue>(create);
-  static PropertyValue _defaultInstance;
+  static PropertyValue? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get index => $_getIZ(0);
@@ -467,7 +535,15 @@ class CmdSetPropertyValues extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   CmdSetPropertyValues._() : super();
-  factory CmdSetPropertyValues() => create();
+  factory CmdSetPropertyValues({
+    $core.Iterable<PropertyValue>? props,
+  }) {
+    final _result = create();
+    if (props != null) {
+      _result.props.addAll(props);
+    }
+    return _result;
+  }
   factory CmdSetPropertyValues.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -483,8 +559,8 @@ class CmdSetPropertyValues extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   CmdSetPropertyValues copyWith(void Function(CmdSetPropertyValues) updates) =>
-      super.copyWith((message) => updates(
-          message as CmdSetPropertyValues)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as CmdSetPropertyValues))
+          as CmdSetPropertyValues; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static CmdSetPropertyValues create() => CmdSetPropertyValues._();
@@ -494,7 +570,7 @@ class CmdSetPropertyValues extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static CmdSetPropertyValues getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<CmdSetPropertyValues>(create);
-  static CmdSetPropertyValues _defaultInstance;
+  static CmdSetPropertyValues? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<PropertyValue> get props => $_getList(0);
@@ -522,7 +598,15 @@ class RespSetPropertyValues extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   RespSetPropertyValues._() : super();
-  factory RespSetPropertyValues() => create();
+  factory RespSetPropertyValues({
+    $0.Status? status,
+  }) {
+    final _result = create();
+    if (status != null) {
+      _result.status = status;
+    }
+    return _result;
+  }
   factory RespSetPropertyValues.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -539,8 +623,8 @@ class RespSetPropertyValues extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   RespSetPropertyValues copyWith(
           void Function(RespSetPropertyValues) updates) =>
-      super.copyWith((message) => updates(
-          message as RespSetPropertyValues)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as RespSetPropertyValues))
+          as RespSetPropertyValues; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static RespSetPropertyValues create() => RespSetPropertyValues._();
@@ -550,7 +634,7 @@ class RespSetPropertyValues extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static RespSetPropertyValues getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RespSetPropertyValues>(create);
-  static RespSetPropertyValues _defaultInstance;
+  static RespSetPropertyValues? _defaultInstance;
 
   @$pb.TagNumber(1)
   $0.Status get status => $_getN(0);
@@ -612,7 +696,39 @@ class LocalCtrlMessage extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   LocalCtrlMessage._() : super();
-  factory LocalCtrlMessage() => create();
+  factory LocalCtrlMessage({
+    LocalCtrlMsgType? msg,
+    CmdGetPropertyCount? cmdGetPropCount,
+    RespGetPropertyCount? respGetPropCount,
+    CmdGetPropertyValues? cmdGetPropVals,
+    RespGetPropertyValues? respGetPropVals,
+    CmdSetPropertyValues? cmdSetPropVals,
+    RespSetPropertyValues? respSetPropVals,
+  }) {
+    final _result = create();
+    if (msg != null) {
+      _result.msg = msg;
+    }
+    if (cmdGetPropCount != null) {
+      _result.cmdGetPropCount = cmdGetPropCount;
+    }
+    if (respGetPropCount != null) {
+      _result.respGetPropCount = respGetPropCount;
+    }
+    if (cmdGetPropVals != null) {
+      _result.cmdGetPropVals = cmdGetPropVals;
+    }
+    if (respGetPropVals != null) {
+      _result.respGetPropVals = respGetPropVals;
+    }
+    if (cmdSetPropVals != null) {
+      _result.cmdSetPropVals = cmdSetPropVals;
+    }
+    if (respSetPropVals != null) {
+      _result.respSetPropVals = respSetPropVals;
+    }
+    return _result;
+  }
   factory LocalCtrlMessage.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -627,8 +743,8 @@ class LocalCtrlMessage extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   LocalCtrlMessage copyWith(void Function(LocalCtrlMessage) updates) =>
-      super.copyWith((message) => updates(
-          message as LocalCtrlMessage)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as LocalCtrlMessage))
+          as LocalCtrlMessage; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static LocalCtrlMessage create() => LocalCtrlMessage._();
@@ -638,10 +754,10 @@ class LocalCtrlMessage extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static LocalCtrlMessage getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<LocalCtrlMessage>(create);
-  static LocalCtrlMessage _defaultInstance;
+  static LocalCtrlMessage? _defaultInstance;
 
   LocalCtrlMessage_Payload whichPayload() =>
-      _LocalCtrlMessage_PayloadByTag[$_whichOneof(0)];
+      _LocalCtrlMessage_PayloadByTag[$_whichOneof(0)]!;
   void clearPayload() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
