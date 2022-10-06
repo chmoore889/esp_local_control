@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:esp_rainmaker_local_control/src/mDNS_api_manager.dart';
+import 'package:esp_rainmaker_local_control/src/mdns_api_manager.dart';
 import 'package:meta/meta.dart';
 import 'package:multicast_dns/multicast_dns.dart';
 
